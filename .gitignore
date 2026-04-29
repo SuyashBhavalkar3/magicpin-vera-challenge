@@ -6,3 +6,5 @@ venv/
 dataset/
 submission.jsonl
 *.md
+myenv/
+myenv

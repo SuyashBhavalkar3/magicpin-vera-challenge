@@ -4,6 +4,7 @@ FROM python:3.11-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PORT 8080
 
 # Set the working directory
 WORKDIR /app
@@ -18,6 +19,6 @@ COPY . .
 # Expose the port
 EXPOSE 8080
 
-# Start the application using the python command directly
-# This ensures our custom port-detection logic in main.py runs
-CMD ["python", "main.py"]
+# Use Uvicorn directly as the entry point
+# We use the shell form so ${PORT} is expanded correctly by Railway
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}

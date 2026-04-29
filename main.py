@@ -1,5 +1,6 @@
 import time
 import uuid
+import os
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 from fastapi import FastAPI, HTTPException, BackgroundTasks
@@ -192,7 +193,6 @@ async def reply(request: ReplyRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    import os
     port = int(os.environ.get("PORT", 8080))
     print(f"VERA ENGINE STARTING ON PORT {port}...")
     uvicorn.run(app, host="0.0.0.0", port=port)
