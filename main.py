@@ -8,6 +8,10 @@ from pydantic import BaseModel
 from bot import VeraComposer
 
 app = FastAPI(title="magicpin Vera AI Engine", version="1.0.0")
+
+# --- STARTUP LOGGING ---
+PORT = int(os.environ.get("PORT", 8080))
+print(f"!!! VERA ENGINE BOOTING ON PORT {PORT} !!!")
 composer = VeraComposer()
 
 # --- IN-MEMORY STATE MANAGEMENT (Top 1 Performance) ---
