@@ -13,7 +13,8 @@ class VeraComposer:
         # 1. CORE CONTEXT EXTRACTION
         m_id = merchant.get('merchant_id', 'unknown')
         m_name = merchant['identity']['name']
-        owner_name = merchant['identity'].get('owner_first_name', 'Doc' if category['slug'] == 'dentists' else 'Partner')
+        cat_slug = category.get('slug', 'generic')
+        owner_name = merchant['identity'].get('owner_first_name', 'Doc' if cat_slug == 'dentists' else 'Partner')
         locality = merchant['identity']['locality']
         send_as = "merchant_on_behalf" if trigger['scope'] == 'customer' else "vera"
         
